@@ -1,19 +1,21 @@
-.game-menu {
-  padding: 10px 50px;
+.game-menu,
+.manual {
+  padding: 5px 10px;
+  height: 132px;
 }
 .btn {
   width: 120px;
 }
 .btn:not(:last-child) {
-  margin-right: 20px;
+  margin-right: 10px;
 }
 .points-container,
 .time-container {
-  margin: 0 auto;
+  margin: auto;
 }
 .time-left,
 .scope {
-  padding: 20px;
+  padding: 15px;
   font-size: 2em;
 }
 .game-veiw-port,
@@ -22,5 +24,8 @@
   height: 400px;
   min-width: 200px;
   padding: 10px;
-  margin-right: 10px;
+}
+
+.wrap:last-child {
+  margin-left: 10px;
 }

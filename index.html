@@ -19,27 +19,41 @@
         Remove
         <small class="text-muted">Cube</small>
       </h1>
-      <div class="game-menu d-flex">
-        <div class="d-flex">
-          <button class="btn rounded-pill btn-outline-success shadow-sm align-self-center">
-            Start
-          </button>
-          <button class="btn rounded-pill btn-outline-success shadow-sm align-self-center">
-            New Game
-          </button>
-        </div>
-        <div class="points-container">
-          <p class="points-description">Points</p>
-          <div class="scope shadow-sm text-md-center">00</div>
-        </div>
-        <div class="time-container">
-          <p class="time-description">Time Left</p>
-          <div class="time-left shadow-sm text-md-center">01:00</div>
-        </div>
-      </div>
       <div class="d-flex">
-        <div class="game-veiw-port container-md"></div>
-        <div class="results-table"></div>
+        <div class="d-flex flex-column wrap">
+          <div class="game-menu d-flex">
+            <div class="d-flex">
+              <button
+                class="btn rounded-pill btn-outline-success shadow-sm align-self-center start"
+              >
+                Start
+              </button>
+              <button
+                class="btn rounded-pill btn-outline-success shadow-sm align-self-center new_game"
+              >
+                New Game
+              </button>
+            </div>
+            <div class="points-container">
+              <p class="points-description">Points</p>
+              <div class="scope shadow-sm text-md-center">00</div>
+            </div>
+            <div class="time-container">
+              <p class="time-description">Time Left</p>
+              <div class="time-left shadow-sm text-md-center">01:00</div>
+            </div>
+          </div>
+          <div class="game-veiw-port container-md"></div>
+        </div>
+        <div class="d-flex flex-column wrap">
+          <div class="manual">
+            <p class="description">The must be some Description</p>
+            <button class="more btn rounded-pill btn-outline-success shadow-sm align-self-center">
+              More
+            </button>
+          </div>
+          <div class="results-table"></div>
+        </div>
       </div>
     </div>
     <!--   Modal  -->
