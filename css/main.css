@@ -3,6 +3,9 @@
   padding: 5px 10px;
   height: 132px;
 }
+.game-menu > div:not(:last-child) {
+  margin-right: 20px;
+}
 .btn {
   width: 120px;
 }
@@ -14,12 +17,13 @@
   margin: auto;
 }
 .time-left,
-.scope {
-  padding: 15px;
+.score {
+  padding: 10px;
   font-size: 2em;
 }
 .game-veiw-port,
 .results-table {
+  position: relative;
   background-color: bisque;
   height: 400px;
   min-width: 200px;
@@ -28,4 +32,37 @@
 
 .wrap:last-child {
   margin-left: 10px;
+}
+
+/*Game boxes*/
+.danger {
+  background-color: red;
+}
+.success {
+  background-color: green;
+}
+.light {
+  background-color: gray;
+}
+.dark {
+  background-color: black;
+}
+.empty {
+  background-color: floralwhite;
+}
+
+@media screen and (max-width: 575px) {
+  .container-sm > div {
+    flex-direction: column;
+  }
+  .game-menu {
+    flex-direction: column;
+    height: auto;
+    padding: 2px;
+  }
+  .time-left,
+  .score {
+    padding: 2px;
+    font-size: 1em;
+  }
 }

@@ -29,18 +29,20 @@
                 Start
               </button>
               <button
-                class="btn rounded-pill btn-outline-success shadow-sm align-self-center new_game"
+                class="btn rounded-pill btn-outline-success shadow-sm align-self-center new-game"
               >
                 New Game
               </button>
             </div>
-            <div class="points-container">
-              <p class="points-description">Points</p>
-              <div class="scope shadow-sm text-md-center">00</div>
-            </div>
-            <div class="time-container">
-              <p class="time-description">Time Left</p>
-              <div class="time-left shadow-sm text-md-center">01:00</div>
+            <div class="d-flex">
+              <div class="points-container">
+                <p class="points-description">Points</p>
+                <div class="score shadow-sm text-md-center">0</div>
+              </div>
+              <div class="time-container">
+                <p class="time-description">Time Left</p>
+                <div class="time-left shadow-sm text-md-center">01:00</div>
+              </div>
             </div>
           </div>
           <div class="game-veiw-port container-md"></div>
@@ -57,6 +59,7 @@
       </div>
     </div>
     <!--   Modal  -->
+    <script src="./js/eventListeners.js" type="module"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy"
