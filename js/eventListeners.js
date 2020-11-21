@@ -8,6 +8,8 @@ const listenersSelector = {
 const boxesClassList = ['danger', 'success', 'light', 'dark', 'empty'];
 const size = [10, 15, 20, 25, 30];
 const position = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+let time = 0;
+let interval;
 
 const random = function (value) {
   console.log('randome');
@@ -16,8 +18,7 @@ const random = function (value) {
 };
 
 const start = function () {
-  console.log('start');
-  game();
+  newGame();
 };
 
 const pause = function () {
@@ -25,34 +26,52 @@ const pause = function () {
 };
 
 const newGame = function () {
-  console.log('newGame');
+  interval = setInterval(changeTime, 1000);
+  time = 60;
+  reset();
+  game();
 };
 
 const showMore = function () {};
+
 const game = function () {
-  console.log('game');
-  createBox();
+  if (time !== 0) {
+    createBox(random([0, 1, 2]));
+    listenersSelector.veiwPort.addEventListener('click', clickBox);
+  } else {
+    gamefinish();
+  }
 };
 
-const createBox = function () {
-  console.log('cretebox');
-  let someBox = document.createElement('div');
-  someBox.classList.add(`${random(boxesClassList)}`);
-  let boxSize = random(size);
-  someBox.setAttribute(
-    'style',
-    `width: ${boxSize}px; height: ${boxSize}px;
+const gamefinish = function () {
+  reset();
+};
+
+const reset = function () {
+  destroyAllBox();
+  document.querySelector('.score').textContent = 0;
+};
+
+const createBox = function (value) {
+  for (let i = 0; i < value; i += 1) {
+    let someBox = document.createElement('div');
+    someBox.classList.add(`${random(boxesClassList)}`);
+    let boxSize = random(size);
+    someBox.setAttribute(
+      'style',
+      `width: ${boxSize}px; height: ${boxSize}px;
      position: absolute; top: ${random(position)}%; left: ${random(position)}%`,
-  );
-  someBox.dataset.point = random([1, 2, 3]);
-  listenersSelector.veiwPort.appendChild(someBox);
+    );
+    someBox.dataset.point = random([1, 2, 3]);
+    listenersSelector.veiwPort.appendChild(someBox);
+  }
 };
 
-const destroyBox = function () {
-  listenersSelector.veiwPort;
+const destroyAllBox = function () {
+  listenersSelector.veiwPort.innerHTML = '';
 };
 const addTime = function (value) {
-  let point = document.querySelector('.time-left');
+  time += value;
 };
 const setPoint = value => {
   /*function adds points to the total score*/
@@ -66,9 +85,18 @@ const clickBox = e => {
   let currentBox = e.target;
   setPoint(e.target.dataset.point);
   currentBox.remove();
+  game();
 };
 
-listenersSelector.btnStart.addEventListener('click', () => start());
-listenersSelector.btnNewGame.addEventListener('click', () => newGame());
-listenersSelector.btnMore.addEventListener('click', () => showMore());
-listenersSelector.veiwPort.addEventListener('click', clickBox);
+function changeTime() {
+  if (time === 0) {
+    clearInterval(interval);
+  } else {
+    time -= 1;
+    document.querySelector('.time-left').textContent = `${parseInt(time / 60)}:${time % 60}`;
+  }
+}
+
+listenersSelector.btnStart.addEventListener('click', start);
+listenersSelector.btnNewGame.addEventListener('click', newGame);
+listenersSelector.btnMore.addEventListener('click', showMore);
