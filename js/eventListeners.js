@@ -10,24 +10,37 @@ const size = [10, 15, 20, 25, 30];
 const position = [10, 20, 30, 40, 50, 60, 70, 80, 90];
 let time = 0;
 let interval;
+let gameIsStatus = false;
 
 const random = function (value) {
-  console.log('randome');
-
   return value[Math.floor(Math.random() * value.length)];
 };
 
 const start = function () {
-  newGame();
+  if (gameIsStatus === false) {
+    interval = setInterval(changeTime, 1000);
+    gameIsStatus = true;
+    listenersSelector.btnStart.textContent = 'Pause';
+    game();
+  } else if (gameIsStatus === true) {
+    pause();
+  }
 };
 
 const pause = function () {
-  console.log('pause');
+  clearInterval(interval);
+  gameIsStatus = false;
+  listenersSelector.veiwPort.removeEventListener('click', clickBox);
+  listenersSelector.btnStart.textContent = 'Start';
 };
 
 const newGame = function () {
+  if (interval) {
+    clearInterval(interval);
+  }
   interval = setInterval(changeTime, 1000);
   time = 60;
+  gameIsStatus = true;
   reset();
   game();
 };
